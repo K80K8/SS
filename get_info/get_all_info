@@ -120,3 +120,4 @@ rem === Append CSV line ===
 echo !number!,!model!,!cpu!,!cores!,!ram_amt!,!ram_type!,!storage_amt!,!storage_type!,!windows!,!win_activated!>> "%outfile%"
 
 endlocal
+
