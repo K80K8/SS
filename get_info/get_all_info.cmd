@@ -46,8 +46,9 @@ if "%choice%"=="1" (
     if not defined number (
         echo You must enter a Barcode.
         goto :getNumber
-    )
+    ) 
     set /p "corp=Please enter the corporate supplier if applicable: "
+    goto gotCode
 ) else (
     :getListing
     set /p "number=Please enter the Listing Number of this device: "
@@ -56,7 +57,9 @@ if "%choice%"=="1" (
         goto :getListing
     )
     set "corp="
+    goto gotCode
 )
+:gotCode
 
 :: ============================================================================
 :: Collect system information
