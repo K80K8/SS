@@ -92,7 +92,8 @@ for /f "skip=1 delims=" %%a in ('wmic bios get serialnumber') do (
 set "windows="
 for /f "skip=1 tokens=* delims=" %%a in ('wmic os get caption') do (
     if not "%%a"=="" (
-        set "windows=%%a"
+        rem Trim leading/trailing whitespace
+        for /f "tokens=* delims= " %%b in ("%%a") do set "windows=%%b"
         goto :gotWindows
     )
 )
@@ -102,7 +103,8 @@ for /f "skip=1 tokens=* delims=" %%a in ('wmic os get caption') do (
 set "win_activated="
 for /f "skip=1 tokens=* delims=" %%a in ('cscript //nologo "%systemroot%\system32\slmgr.vbs" /xpr') do (
     if not "%%a"=="" (
-        set "win_activated=%%a"
+        rem Remove leading spaces/tabs
+        for /f "tokens=* delims= " %%b in ("%%a") do set "win_activated=%%b"
         goto :gotActivated
     )
 )

@@ -1,3 +1,7 @@
-ID,Number,Model,CPU,RAM Amount and Type,Storage Amount and Type,Windows Type and Version,Is Windows Activated?
-,1,ROG Strix G513IE_G513IE,AMD Ryzen 7 4800H 8 Core Processor,16GB DDR4,512GB SSD,Windows 11 Pro,Yes
-,2,Custom Build,Intel Core i7-10700 8 Core Processor,16GB DDR4,512GB SSD,Windows 11 Pro,Yes
+ID,ForSystem,Barcode,Manufacturer,Model,SerialNumber,CPU,CorporateSupplier,RAM Amount and Type,Storage Amount and Type,Windows Type and Version,Is Windows Activated?
+,1,Barcode1,ASUSTeK COMPUTER INC.,ROG Strix G513IE_G513IE,N3NRKD03324310B,AMD Ryzen 7 4800H 8 Core Processor,Test,16GB DDR4,512GB SSD,Microsoft Windows 11 Home,The machine is permanently activated.
+,1,Barcode2,ASUSTeK COMPUTER INC.,ROG Strix G513IE_G513IE,N3NRKD03324310B,AMD Ryzen 7 4800H 8 Core Processor,nan,16GB DDR4,512GB SSD,Microsoft Windows 11 Home,The machine is permanently activated.
+,0,List1,ASUSTeK COMPUTER INC.,ROG Strix G513IE_G513IE,N3NRKD03324310B,AMD Ryzen 7 4800H 8 Core Processor,nan,16GB DDR4,512GB SSD,Microsoft Windows 11 Home,The machine is permanently activated.
+,1,Barcode3,ASUSTeK COMPUTER INC.,ROG Strix G513IE_G513IE,N3NRKD03324310B,AMD Ryzen 7 4800H 8 Core Processor,Test2,16GB DDR4,512GB SSD,Microsoft Windows 11 Home,The machine is permanently activated.
+,0,List2,ASUSTeK COMPUTER INC.,ROG Strix G513IE_G513IE,N3NRKD03324310B,AMD Ryzen 7 4800H 8 Core Processor,nan,16GB DDR4,512GB SSD,Microsoft Windows 11 Home,The machine is permanently activated.
+,0,List3,ASUSTeK COMPUTER INC.,ROG Strix G513IE_G513IE,N3NRKD03324310B,AMD Ryzen 7 4800H 8 Core Processor,nan,16GB DDR4,512GB SSD,Microsoft Windows 11 Home,The machine is permanently activated.
