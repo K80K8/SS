@@ -1,5 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
+@REM net use Z: "\\192.168.1.32\Data Entry" /user:DataEntry password
+
+@REM set "outfile=\\192.168.1.32\Data Entry\test.txt"
 
 set "outfile=test.txt"
 
@@ -19,11 +22,11 @@ for /f "skip=1 delims=" %%a in ('wmic computersystem get manufacturer') do (
     if defined line (
         for /f "tokens=* delims=" %%b in ("!line!") do (
             set "manufacturer=%%b"
-            goto :next1
+            goto :gotManufacturer
         )
     )
 )
-:next1
+:gotManufacturer
 
 rem === Get Model ===
 set "model="
