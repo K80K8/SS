@@ -175,7 +175,7 @@ for /f "skip=1 tokens=* delims=" %%a in ('wmic diskdrive get size') do (
 
 :: Storage Type
 set "storage_type="
-for /f "skip=3 tokens=* delims=" %%a in ('powershell -command "Get-PhysicalDisk | Select MediaType"') do (
+for /f "skip=3 tokens=* delims=" %%a in ('powershell -command "Get-PhysicalDisk | Sort-Object -Property DiskNumber | Select MediaType"') do (
     if not "%%a"=="" (
         set "storage_type=%%a"
         goto :gotDiskType
