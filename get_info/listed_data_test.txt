@@ -1,3 +1,0 @@
-Number,Model,CPU,CPUCores,RAMAmount,RAMType,StorageAmount,StorageType,Windows,WindowsActivated
-1,ROG Strix G513IE_G513IE  ,AMD Ryzen 7 4800H with Radeon Graphics  ,8              ,16558182400          ,26                ,512105932800  ,SSD      ,Windows 11 Pro,y
-2,Custom Build  ,Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz ,8              ,16558182400          ,26                ,512105932800  ,SSD      ,Windows 11 Pro,y
