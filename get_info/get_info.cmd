@@ -12,7 +12,7 @@ set "outfile=info_vol0.txt"
 :: Create file with headers if it does not exist
 :: ============================================================================
 if not exist "%outfile%" (
-    echo ForSystem,Barcode,Manufacturer,Model,SerialNumber,CPU,CPUCores,RAMAmount,RAMType,StorageAmount,StorageType,CorporateSupplier,Windows,WindowsActivated> "%outfile%"
+    echo ForSystem,Barcode,Manufacturer,Model,SerialNumber,CPU,CPUCores,RAMAmount,RAMType,CorporateSupplier,Windows,WindowsActivated,DiskInfo> "%outfile%"
 )
 
 :: ============================================================================
@@ -163,25 +163,26 @@ for /f "skip=1 tokens=* delims=" %%a in ('wmic memoryChip get SMBIOSMemoryType')
 )
 :gotRamType
 
-:: Storage Size
-set "storage_amt="
-for /f "skip=1 tokens=* delims=" %%a in ('wmic diskdrive get size') do (
-    if not "%%a"=="" (
-        set "storage_amt=%%a"
-        goto :gotDiskSize
-    )
-)
-:gotDiskSize
 
-:: Storage Type
-set "storage_type="
-for /f "skip=3 tokens=* delims=" %%a in ('powershell -command "Get-PhysicalDisk | Sort-Object -Property DiskNumber | Select MediaType"') do (
-    if not "%%a"=="" (
-        set "storage_type=%%a"
-        goto :gotDiskType
+set "disk_info="
+
+:: Get storage disk info from PowerShell
+for /f "tokens=* delims=" %%a in ('powershell -NoProfile -Command "Get-PhysicalDisk | Sort-Object DiskNumber | Select MediaType, Size, SerialNumber | Format-Table -HideTableHeaders"') do (
+    set "line=%%a"
+    set "line=!line:\"=!"
+
+    :: Trim line to remove spaces (optional, improves robustness)
+    for /f "tokens=* delims= " %%b in ("!line!") do set "line=%%b"
+
+    :: Only append if line is not empty
+    if defined line (
+        if defined disk_info (
+            set "disk_info=!disk_info!|!line!"
+        ) else (
+            set "disk_info=!line!"
+        )
     )
 )
-:gotDiskType
 
 :: ============================================================================
 :: Trim spaces from values
@@ -197,7 +198,8 @@ for /f "tokens=* delims= " %%A in ("!storage_type!") do set "storage_type=%%A"
 :: ============================================================================
 :: Append results to CSV
 :: ============================================================================
-echo !choice!,!number!,!manufacturer!,!model!,!serial!,!cpu!,!cores!,!ram_amt!,!ram_type!,!storage_amt!,!storage_type!,!corp!,!windows!,!win_activated!>> "%outfile%"
+set "extra=extra"
+echo !choice!,!number!,!manufacturer!,!model!,!serial!,!cpu!,!cores!,!ram_amt!,!ram_type!,!corp!,!windows!,!win_activated!,!disk_info!>> "%outfile%"
 
 echo done
 pause
