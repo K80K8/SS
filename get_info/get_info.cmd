@@ -12,7 +12,7 @@ set "outfile=info_vol0.txt"
 :: Create file with headers if it does not exist
 :: ============================================================================
 if not exist "%outfile%" (
-    echo ForSystem,Barcode,Manufacturer,Model,SerialNumber,CPU,CPUCores,RAMAmount,RAMType,CorporateSupplier,Windows,WindowsActivated,DiskInfo> "%outfile%"
+    echo ForSystem,Barcode,Manufacturer,Model,SerialNumber,CPU,CPUCores,RAMAmount,RAMType,CorporateSupplier,Windows,WindowsActivated,Grade,DiskInfo> "%outfile%"
 )
 
 :: ============================================================================
@@ -60,6 +60,30 @@ if "%choice%"=="1" (
     goto gotCode
 )
 :gotCode
+
+:: ============================================================================
+:: Ask user for Grade: (A), (B), or (C)
+:: ============================================================================
+:askGrade
+echo.
+echo Enter Grade: A, B, or C
+set /p "grade=Your choice: "
+
+rem Convert input to uppercase for easier comparison
+set "grade=!grade:~0,1!"
+for %%G in (A B C) do (
+    if /I "!grade!"=="%%G" (
+        echo You entered %%G.
+        goto :gotGrade
+    )
+)
+
+echo Invalid input. Please enter A, B, or C without spaces.
+goto :askGrade
+
+:gotGrade
+
+echo Please wait ...
 
 :: ============================================================================
 :: Collect system information
@@ -199,8 +223,8 @@ for /f "tokens=* delims= " %%A in ("!storage_type!") do set "storage_type=%%A"
 :: Append results to CSV
 :: ============================================================================
 set "extra=extra"
-echo !choice!,!number!,!manufacturer!,!model!,!serial!,!cpu!,!cores!,!ram_amt!,!ram_type!,!corp!,!windows!,!win_activated!,!disk_info!>> "%outfile%"
+echo !choice!,!number!,!manufacturer!,!model!,!serial!,!cpu!,!cores!,!ram_amt!,!ram_type!,!corp!,!windows!,!win_activated!,!grade!,!disk_info!>> "%outfile%"
 
-echo done
+echo Done.
 pause
 endlocal
