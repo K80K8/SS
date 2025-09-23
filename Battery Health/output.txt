@@ -1,0 +1,6 @@
+
+DesignCapacity FullChargeCapacity CycleCount Health 
+-------------- ------------------ ---------- ------ 
+48870          42710              132        87.40%%
+
+
