@@ -1,8 +1,7 @@
 # MakeInfoCopies.ps1
-# --- edit these two paths ---
-$template = 'get_info.cmd'   # path to your template that contains: set "outfile=info_vol0.txt"
+
+$template = 'get_info.cmd'
 $base     = 'Get_Infos'                # parent folder containing INFO 1..INFO 20
-# -----------------------------
 
 1..20 | ForEach-Object {
     $i = $_
