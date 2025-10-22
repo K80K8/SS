@@ -1,0 +1,1 @@
+GET_BATTERY_HEALTH.cmd is a script that can be run from the Windows command line to quickly check battery health as a percentage of FullChargeCapacity vs DesignCapacity. It works for multiple batteries.
