@@ -1,1 +1,0 @@
-powercfg /batteryreport /XML /OUTPUT "C:/Users/User/battery-report.xml" && powershell -ExecutionPolicy Bypass -File "test.ps1" > "output.txt" && output.txt
